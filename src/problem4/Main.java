@@ -8,8 +8,9 @@ public class Main {
 
 	public static void main(final String[] args){
 		Files f = new Files();
+		String dir = "E:\\films";
 		try {
-			f.searchForDuplicateFiles("E:\\films");
+			f.searchForDuplicateFiles(dir);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

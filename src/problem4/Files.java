@@ -34,7 +34,6 @@ public class Files {
 		}
 	}
 	
-	
 	private boolean contain(File file) throws IOException {
 		if (file == null) {
 			 for (int i = 0; i < files.size() - 1; i++){
@@ -72,7 +71,6 @@ public class Files {
 				DataInputStream dis2 = new DataInputStream(new FileInputStream(file2));) {
 			for (int i = 0; i < dis1.available(); i += accuracy) {
 				
-				
 				sumFromFile1 += dis1.readByte();
 				sumFromFile2 += dis2.readByte();
 				
@@ -92,9 +90,12 @@ public class Files {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder(files.size());
+		sb.append("[");
 		for (File file : files) {
-			sb.append(file.getName() + "\n");
+			sb.append("'" + file.getName() + "', ");
 		}
+		sb.setLength(sb.length() - 2);
+		sb.append("]");
 		return sb.toString();
 	}
 }
