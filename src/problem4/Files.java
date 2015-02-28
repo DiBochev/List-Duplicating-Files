@@ -36,26 +36,22 @@ public class Files {
 	
 	
 	private boolean contain(File file) throws IOException {
-		
 		if (file == null) {
 			 for (int i = 0; i < files.size() - 1; i++){
 	                if (files.get(i) == null)
 	                    return true;
 	        }
 		}
-		//if some error (not exist file)
 		if (!file.exists()) {
 			return true;
 		}
 		
-		//if cant read file, or have no access, don't try to delete it
 		if (!file.canRead()) {
 			return false;
 		}
 
 		for (int i = 0; i < files.size(); i++) {
 			if(files.get(i).length() == file.length()){
-//				return  true; //recursivelyCompare(0, 1000, files.get(i), file);
 				return isContentEqual(files.get(i), file);
 			}
 		}
@@ -101,37 +97,4 @@ public class Files {
 		}
 		return sb.toString();
 	}
-	
-//	private boolean recursivelyCompare(long equalsTo, int step, File file1,File file2) throws IOException {
-//		long sumFromFile = 0;
-//		long sumFromFile2 = 0;
-//		
-//		if (equalsTo + step >= file1.length()){
-//			equalsTo = file1.length() - 1;
-//			step = 0;
-//		}
-//		
-//		
-//		try(DataInputStream dis1 = new DataInputStream(new FileInputStream(file1));){
-//			for (long i = equalsTo; i < equalsTo + step; i++) {
-//				sumFromFile+= dis1.readByte();
-//			}
-//		}
-//		try(DataInputStream dis2 = new DataInputStream(new FileInputStream(file2));){
-//			for (long i = equalsTo; i < equalsTo + step; i++) {
-//				sumFromFile2+= dis2.readByte();
-//			}
-//		}
-//		
-//		
-//		if (sumFromFile == sumFromFile2) {
-//			if (equalsTo == file1.length() - 1) {
-//				return true;
-//			}
-//			recursivelyCompare(equalsTo + 1000, 1000, file1, file2);
-//		}else{
-//			return false;
-//		}
-//		return true;
-//	}
 }
