@@ -9,9 +9,10 @@ public class Main {
 	public static void main(final String[] args){
 		Files f = new Files();
 		try {
-			f.searchForDuplicateFiles("E:\\1");
+			f.searchForDuplicateFiles("E:\\films");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		System.out.println(f.toString());
 	}
 }
