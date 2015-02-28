@@ -59,8 +59,6 @@ public class Files {
 
 	private boolean isContentEqual(File file1,File file2) throws IOException{
 		
-		long sumFromFile1 = 0;
-		long sumFromFile2 = 0;
 		long accuracy = file1.length() / 1000;
 		
 		if (accuracy == 0) {
@@ -71,17 +69,12 @@ public class Files {
 				DataInputStream dis2 = new DataInputStream(new FileInputStream(file2));) {
 			for (int i = 0; i < dis1.available(); i += accuracy) {
 				
-				sumFromFile1 += dis1.readByte();
-				sumFromFile2 += dis2.readByte();
-				
-				if (sumFromFile1 != sumFromFile2) {
+				if (dis1.readByte() != dis2.readByte()) {
 					return false;
 				}
 				if (i + accuracy >= dis1.available()) {
 					return true;
 				}
-				sumFromFile1 = 0;
-				sumFromFile2 = 0;
 			}
 		}
 		return true;
